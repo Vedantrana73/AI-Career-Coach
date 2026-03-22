@@ -2,10 +2,10 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getCoverLetter } from "@/actions/cover-letter";
-import CoverLetterPreview from "../_components/cover-letter-preview";
+import CoverLetterEditorClient from "../_components/cover-letter-editor-client";
 
 export default async function EditCoverLetterPage({ params }) {
-  const { id } = await params;
+  const { id } = await params; // ✅ FIX
   const coverLetter = await getCoverLetter(id);
 
   return (
@@ -23,7 +23,7 @@ export default async function EditCoverLetterPage({ params }) {
         </h1>
       </div>
 
-      <CoverLetterPreview content={coverLetter?.content} />
+      <CoverLetterEditorClient initialContent={coverLetter?.content} />
     </div>
   );
 }
